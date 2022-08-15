@@ -1,5 +1,15 @@
-function tocaSom(idElementoAudio) {
-    document.querySelector(idElementoAudio).play();
+function tocaSom(seletorAudio) {
+  const elemento = document.querySelector(seletorAudio);
+
+  // and = &&
+  // != null, não é necessário pois o if ja entende como 'se' 'elemento' existe ele vai dar play
+    if (elemento && elemento.localName === 'audio') {
+            elemento.play();
+    }
+    else {
+        // alert('Elemento não encontrado') -> também é uma opção
+    console.log('Elemento não encontrado ou seletor inválido');
+    }
 }
 
 //document.querySelector('.tecla_pom').onclick = tocaSomPom;
@@ -26,6 +36,18 @@ for (let contador = 0; contador < listaDeTeclas.length; contador++) {
         tocaSom(idAudio);
     }
 
+//quando a tecla estiver abaixada    
+    tecla.onkeydown = function (evento) {
+
+        //se (dada condição for verdadeira) execute esse código
+        // || = ou (operador de alternância)
+    if (evento.code === "Enter" || evento.code === "Space") { 
+        tecla.classList.add('ativa');
+        }
+    }
+    tecla.onkeyup = function () {
+        tecla.classList.remove('ativa')
+    }
 
 //o Console.log vai imprimir essa condição, até ela ser considerada
 //falsa, ou seja, quando for > que 9 = false    
